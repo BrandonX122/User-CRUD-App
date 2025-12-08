@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "57cc",
+      "first_name": "Brandon",
+      "last_name": "Nascimento",
+      "email": "user@nextmail.com",
+      "birthday": "2006-02-17T05:00:00.000Z"
+    },
+    {
+      "id": "0b7d",
+      "first_name": "Brandon",
+      "last_name": "Nascimento",
+      "email": "user@nextmail.com",
+      "birthday": "March 18, 2000"
+    },
+    {
+      "id": "1949",
+      "first_name": "Esteban",
+      "last_name": "Rodriguez",
+      "email": "tgifman11@gmail.com",
+      "birthday": "August 13, 2002"
+    },
+    {
+      "id": "2af2",
+      "first_name": "John",
+      "last_name": "Smith",
+      "email": "user@nextmail.com",
+      "birthday": "December 6, 2003"
+    },
+    {
+      "id": "1e6a",
+      "first_name": "Daniel",
+      "last_name": "Doe",
+      "email": "tgifman11@gmail.com",
+      "birthday": "July 23, 2003"
+    }
+  ]
+}
