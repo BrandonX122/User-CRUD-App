@@ -29,3 +29,18 @@ export async function createUser(formData: FormData) {
 
   redirect("/people");
 }
+
+export async function deleteUser(id: string) {
+  try {
+    const res = await fetch(`http://localhost:8000/users/${id}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) {
+      throw new Error("Failed to delete user");
+    }
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+
+  redirect("/people");
+}

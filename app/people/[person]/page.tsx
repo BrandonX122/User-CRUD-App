@@ -1,4 +1,5 @@
 import { fetchUserById } from "@/lib/data";
+import DeleteUser from "@/app/components/DeleteUser";
 import React from "react";
 
 export default async function Page(props: {
@@ -29,6 +30,7 @@ export default async function Page(props: {
             Remind Yourself to wish {user.first_name} a Happy Birthday!
           </p>
           <p className="font-bold text-lg"> Contact: {user.email}</p>
+          <DeleteUser id={id} />
         </div>
       </section>
     </div>

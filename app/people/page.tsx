@@ -1,4 +1,5 @@
 import { fetchUser, fetchPages } from "@/lib/data";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import UserCard from "@/app/components/UserCard";
 import PaginationPages from "@/app/components/PaginationPages";
@@ -12,9 +13,9 @@ export default async function Page(props: {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <div className="max-w-5xl w-full inline-block">
-        <div className="border-4 border-[#fefae0] shadow-md/20 inline-block px-2 py-2 rounded-full mb-2">
+        <div className="border-4 border-[#fefae0] bg-[#ffdb58] shadow-md inline-block px-2 py-2 rounded-full mb-1">
           <Link href="/" className="font-black">
-            Back
+            <ArrowLeft />
           </Link>
         </div>
       </div>

@@ -19,7 +19,6 @@ const PaginationPages = ({
 }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  console.log(searchParams);
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
