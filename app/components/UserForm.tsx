@@ -1,42 +1,70 @@
+"use client";
+
+import { useActionState } from "react";
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field";
-import { createUser } from "@/lib/action";
+import { createUser, State } from "@/lib/action";
 export default function UserForm() {
   const currentYear = new Date().getFullYear();
+  const initialState: State = { message: null, errors: {} };
+  const [state, formAction] = useActionState(createUser, initialState);
+
   return (
-    <form action={createUser}>
+    <form action={formAction}>
       <FieldSet>
         <FieldGroup>
           <Field>
             <FieldLabel htmlFor="first">First Name:</FieldLabel>
             <input
-              required
               id="first"
               name="first"
               placeholder="John"
               type="text"
               className="border-black border-4 outline-none rounded px-3 py-2 w-full"
             />
+            <div id="first-name-error">
+              {state.errors?.first_name &&
+                state.errors.first_name.map((error: string) => (
+                  <p key={error} className="mt-1 text-sm text-red-500">
+                    {error}
+                  </p>
+                ))}
+            </div>
           </Field>
+
           <Field>
             <FieldLabel htmlFor="last">Last Name:</FieldLabel>
             <input
-              required
               id="last"
               name="last"
               placeholder="Doe"
               type="text"
               className="border-black border-4 outline-none rounded px-3 py-2 w-full"
             />
+            <div id="last-name-error">
+              {state.errors?.last_name &&
+                state.errors.last_name.map((error: string) => (
+                  <p key={error} className="mt-1 text-sm text-red-500">
+                    {error}
+                  </p>
+                ))}
+            </div>
           </Field>
           <Field>
             <FieldLabel htmlFor="email">Email:</FieldLabel>
             <input
-              required
               id="email"
               name="email"
               placeholder="Email"
               className="border-black border-4 outline-none rounded px-3 py-2 w-full"
             />
+            <div id="email-error">
+              {state.errors?.email &&
+                state.errors.email.map((error: string) => (
+                  <p key={error} className="mt-1 text-sm text-red-500">
+                    {error}
+                  </p>
+                ))}
+            </div>
           </Field>
         </FieldGroup>
       </FieldSet>
@@ -45,7 +73,7 @@ export default function UserForm() {
           <div className="grid grid-cols-3 gap-4">
             <Field>
               <FieldLabel htmlFor="month">Month:</FieldLabel>
-              <select required id="month" name="month">
+              <select id="month" name="month">
                 <option value="" hidden>
                   MM
                 </option>
@@ -62,10 +90,18 @@ export default function UserForm() {
                 <option value="11">11</option>
                 <option value="12">12</option>
               </select>
+              <div id="month-error">
+                {state.errors?.month &&
+                  state.errors.month.map((error: string) => (
+                    <p key={error} className="mt-1 text-sm text-red-500">
+                      {error}
+                    </p>
+                  ))}
+              </div>
             </Field>
             <Field>
               <FieldLabel htmlFor="day">Day:</FieldLabel>
-              <select required name="day" id="day">
+              <select name="day" id="day">
                 <option value="" hidden>
                   DD
                 </option>
@@ -101,10 +137,18 @@ export default function UserForm() {
                 <option value="30">30</option>
                 <option value="31">31</option>
               </select>
+              <div id="day-error">
+                {state.errors?.day &&
+                  state.errors.day.map((error: string) => (
+                    <p key={error} className="mt-1 text-sm text-red-500">
+                      {error}
+                    </p>
+                  ))}
+              </div>
             </Field>
             <Field>
               <FieldLabel htmlFor="year">Year:</FieldLabel>
-              <select required id="year" name="year">
+              <select id="year" name="year">
                 <option value="" hidden>
                   YYYY
                 </option>
@@ -117,6 +161,14 @@ export default function UserForm() {
                   </option>
                 ))}
               </select>
+              <div id="year-error">
+                {state.errors?.year &&
+                  state.errors.year.map((error: string) => (
+                    <p key={error} className="mt-1 text-sm text-red-500">
+                      {error}
+                    </p>
+                  ))}
+              </div>
             </Field>
           </div>
         </FieldGroup>
