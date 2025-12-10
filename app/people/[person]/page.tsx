@@ -1,5 +1,8 @@
 import { fetchUserById } from "@/lib/data";
 import DeleteUser from "@/app/components/DeleteUser";
+import EditUser from "@/app/components/EditUser";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import React from "react";
 
 export default async function Page(props: {
@@ -30,7 +33,23 @@ export default async function Page(props: {
             Remind Yourself to wish {user.first_name} a Happy Birthday!
           </p>
           <p className="font-bold text-lg"> Contact: {user.email}</p>
-          <DeleteUser id={id} />
+          <div className="flex gap-3">
+            <Link
+              href="/people"
+              className="
+    w-12 h-12 flex items-center justify-center rounded-full 
+    bg-[#ffdb58] text-black
+    border-4 border-white border-b-6  /* thicker bottom = raised */
+    shadow-md transition-all duration-200 
+    hover:translate-y-1 hover:border-b-4 hover:shadow-sm hover:cursor-pointer
+    active:translate-y-1 active:border-b-2 active:shadow-sm
+  "
+            >
+              <ArrowLeft />
+            </Link>
+            <EditUser id={id} />
+            <DeleteUser id={id} />
+          </div>
         </div>
       </section>
     </div>

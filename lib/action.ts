@@ -28,6 +28,7 @@ const FormSchema = z.object({
 });
 
 const CreateUser = FormSchema.omit({ id: true });
+const EditUser = FormSchema.omit({ id: true });
 export async function createUser(prevState: State, formData: FormData) {
   const validatedFields = CreateUser.safeParse({
     first_name: formData.get("first"),
@@ -66,6 +67,55 @@ export async function createUser(prevState: State, formData: FormData) {
   });
 
   redirect("/people");
+}
+
+export async function editUser(
+  id: string,
+  prevState: State,
+  formData: FormData
+) {
+  const validatedFields = EditUser.safeParse({
+    first_name: formData.get("first"),
+    last_name: formData.get("last"),
+    email: formData.get("email"),
+    month: formData.get("month"),
+    day: formData.get("day"),
+    year: formData.get("year"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: z.flattenError(validatedFields.error).fieldErrors,
+      message: "Missing Fields, Failed to Update User.",
+    };
+  }
+
+  const bday = new Date(
+    `${validatedFields.data.month}-${validatedFields.data.day}-${validatedFields.data.year}`
+  ).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  try {
+    const res = await fetch(`http://localhost:8000/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: validatedFields.data.first_name,
+        last_name: validatedFields.data.last_name,
+        email: validatedFields.data.email,
+        birthday: bday,
+      }),
+    });
+  } catch (error) {
+    return { message: "Server Error: Failed to update user." };
+  }
+
+  redirect(`/people/${id}`);
 }
 
 export async function deleteUser(id: string) {
