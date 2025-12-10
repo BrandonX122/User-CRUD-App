@@ -1,39 +1,11 @@
 {
   "users": [
     {
-      "id": "0b7d",
-      "first_name": "Brandon",
-      "last_name": "Nascimento",
-      "email": "user@nextmail.com",
-      "birthday": "February 3, 2000"
-    },
-    {
-      "id": "1949",
-      "first_name": "Esteban",
-      "last_name": "Rodriguez",
-      "email": "tgifman11@gmail.com",
-      "birthday": "August 13, 2002"
-    },
-    {
-      "id": "1616",
-      "first_name": "Adma",
-      "last_name": "Nascimento",
-      "email": "adma@gmail.com",
-      "birthday": "April 6, 1963"
-    },
-    {
-      "id": "a356",
-      "first_name": "Micheal",
-      "last_name": "Goobie",
-      "email": "user@nextmail.com",
-      "birthday": "July 19, 1995"
-    },
-    {
-      "id": "5067",
-      "first_name": "Tester",
-      "last_name": "WeDidIt",
-      "email": "user@nextmail.com",
-      "birthday": "January 1, 2002"
+      "id": "0430",
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "user@mail.com",
+      "birthday": "January 1, 2025"
     }
   ]
 }
